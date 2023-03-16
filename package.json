@@ -1,0 +1,25 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "An advanced project",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gbangbolaoluwagbemiga/Advanced-project.git"
+  },
+  "author": "Gbangbola oluwagbemiga",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gbangbolaoluwagbemiga/Advanced-project/issues"
+  },
+  "homepage": "https://github.com/Gbangbolaoluwagbemiga/Advanced-project#readme",
+  "dependencies": {
+    "parcel": "^2.8.3"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3"
+  }
+}
