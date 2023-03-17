@@ -11,8 +11,7 @@ const timeout = function(s) {
 ///////////////////////////////////////
 const showRecipe = async function() {
     try {
-        const res = await fetch(// `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886`
-        `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc990`);
+        const res = await fetch(`https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886`);
         const data = await res.json();
         if (!res.ok) throw new Error(`${data.message} ${res.status}`);
         let { recipe  } = data.data;
@@ -79,27 +78,18 @@ const showRecipe = async function() {
 <div class="recipe__ingredients">
 <h2 class="heading--2">Recipe ingredients</h2>
 <ul class="recipe__ingredient-list">
-  <li class="recipe__ingredient">
-    <svg class="recipe__icon">
-      <use href="src/img/icons.svg#icon-check"></use>
-    </svg>
-    <div class="recipe__quantity">1000</div>
-    <div class="recipe__description">
-      <span class="recipe__unit">g</span>
-      pasta
-    </div>
-  </li>
-
-  <li class="recipe__ingredient">
-    <svg class="recipe__icon">
-      <use href="src/img/icons.svg#icon-check"></use>
-    </svg>
-    <div class="recipe__quantity">0.5</div>
-    <div class="recipe__description">
-      <span class="recipe__unit">cup</span>
-      ricotta cheese
-    </div>
-  </li>
+${recipe.ingredients.map((ing)=>{
+            return `
+    <li class="recipe__ingredient">
+      <svg class="recipe__icon">
+        <use href="src/img/icons.svg#icon-check"></use>
+      </svg>
+      <div class="recipe__quantity">${ing.quantity}</div>
+      <div class="recipe__description">
+        <span class="recipe__unit">${ing.unit} </span>${ing.description}
+      </div>
+    </li>`;
+        }).join("")}
 </ul>
 </div>
 
@@ -122,6 +112,7 @@ const showRecipe = async function() {
 </a>
 </div>
 `;
+        recipeContainer.innerHTML = "";
         recipeContainer.insertAdjacentHTML("afterbegin", html);
     // console.log(res, data);
     } catch (error) {

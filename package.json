@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/Gbangbolaoluwagbemiga/Advanced-project#readme",
   "dependencies": {
+    "core-js": "^3.29.1",
     "jsdom": "^21.1.1",
-    "parcel": "^2.8.3"
+    "parcel": "^2.8.3",
+    "regenerator-runtime": "^0.13.11"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.8.3"
+    "@parcel/transformer-sass": "^2.8.3",
+    "process": "^0.11.10"
   }
 }
