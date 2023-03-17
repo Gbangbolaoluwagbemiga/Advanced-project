@@ -1,4 +1,6 @@
-'use strict';
+// 'use strict';
+const arr = [12, 45, 6, 7, 8, 14];
+console.log(arr.slice(0, 3));
 
 const recipeContainer = document.querySelector('.recipe');
 
