@@ -1,10 +1,13 @@
 'use strict';
-import icons from 'url:../img/icons.svg';
 import 'core-js/stable';
 
 // importing the state module
 import * as model from './model.js';
-// console.log(icons);
+
+// importing class from recipe view
+import recipeView from './views/recipeView.js';
+
+// console.log(recipeView.data);
 
 const recipeContainer = document.querySelector('.recipe');
 
