@@ -62,7 +62,7 @@ const showRecipe = async function () {
       ingredients: recipe.ingredients,
       cookingTime: recipe.cooking_time,
     };
-    console.log(recipe);
+    // console.log(recipe);
 
     const html = `
   <figure class="recipe__fig">
