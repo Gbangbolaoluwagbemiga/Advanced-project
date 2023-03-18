@@ -1,7 +1,9 @@
 'use strict';
 import icons from 'url:../img/icons.svg';
 import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+
+// importing the state module
+import * as model from './model.js';
 // console.log(icons);
 
 const recipeContainer = document.querySelector('.recipe');
@@ -42,26 +44,12 @@ const showRecipe = async function () {
     const id = window.location.hash.slice(1);
     console.log(id);
 
+    // Guard clause peradventure there is no hash
     if (!id) return;
 
-    const res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
-      // `https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc990`
-    );
-    const data = await res.json();
-    if (!res.ok) throw new Error(`${data.message} ${res.status}`);
-
-    let { recipe } = data.data;
-    recipe = {
-      id: recipe.id,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
-      title: recipe.title,
-      servings: recipe.servings,
-      ingredients: recipe.ingredients,
-      cookingTime: recipe.cooking_time,
-    };
+    // Recipe loader
+    await model.loadRecipe(id);
+    const { recipe } = model.state;
     // console.log(recipe);
 
     const html = `
