@@ -48,6 +48,7 @@ class ReceipeView {
           <p>Start by searching for a recipe or an ingredient. Have fun!</p>
         </div>
 `;
+    this.#clear();
   }
 
   // clearing the parentEl
