@@ -33,5 +33,7 @@ const showRecipe = async function () {
 // checking for the hash
 // window.addEventListener('hashchange', showRecipe);
 // window.addEventListener('load', showRecipe);
-
-['hashchange', 'load'].forEach(ev => window.addEventListener(ev, showRecipe));
+const init = function () {
+  recipeView.addHandlerRender(showRecipe);
+};
+init();
