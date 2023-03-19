@@ -27,7 +27,8 @@ const showRecipe = async function () {
     const { recipe } = model.state;
     recipeView.render(recipe);
   } catch (error) {
-    alert(error);
+    recipeView.renderError();
+    // alert(error);
   }
 };
 // checking for the hash
