@@ -8,6 +8,7 @@ class ReceipeView {
   #parentEL = document.querySelector('.recipe');
   #data;
   #errorMessage = `we couldn't find the recipe, please check and try again!!.`;
+  #fulfilledMessage = '';
 
   addHandlerRender(handler) {
     ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
