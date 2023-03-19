@@ -565,9 +565,6 @@ var _modelJs = require("./model.js");
 // importing class from recipe view
 var _recipeViewJs = require("./views/recipeView.js");
 var _recipeViewJsDefault = parcelHelpers.interopDefault(_recipeViewJs);
-// importing fractional
-var _fractional = require("fractional");
-var _fractionalDefault = parcelHelpers.interopDefault(_fractional);
 "use strict";
 /*
 const timeout = function (s) {
@@ -604,7 +601,7 @@ const showRecipe = async function() {
     "load"
 ].forEach((ev)=>window.addEventListener(ev, showRecipe));
 
-},{"core-js/modules/es.regexp.flags.js":"gSXXb","core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","./views/recipeView.js":"l60JC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","fractional":"3SU56"}],"gSXXb":[function(require,module,exports) {
+},{"core-js/modules/es.regexp.flags.js":"gSXXb","core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","./views/recipeView.js":"l60JC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gSXXb":[function(require,module,exports) {
 var global = require("3c8ab2a66f4cb945");
 var DESCRIPTORS = require("4ea93cb03f7465d0");
 var defineBuiltInAccessor = require("5bccd37c22bfba94");
@@ -2650,6 +2647,8 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _iconsSvg = require("url:../../img/icons.svg");
 var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
+// importing fractional
+var _fractional = require("fractional");
 class ReceipeView {
     #parentEL = document.querySelector(".recipe");
     #data;
@@ -2723,7 +2722,7 @@ ${this.#data.ingredients.map((ing)=>{
       <svg class="recipe__icon">
         <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
       </svg>
-      <div class="recipe__quantity">${ing.quantity}</div>
+      <div class="recipe__quantity">${ing.quantity ? new (0, _fractional.Fraction)(ing.quantity).toString() : ""}</div>
       <div class="recipe__description">
         <span class="recipe__unit">${ing.unit} </span>${ing.description}
       </div>
@@ -2767,7 +2766,7 @@ ${this.#data.ingredients.map((ing)=>{
 }
 exports.default = new ReceipeView();
 
-},{"url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"loVOp":[function(require,module,exports) {
+},{"url:../../img/icons.svg":"loVOp","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","fractional":"3SU56"}],"loVOp":[function(require,module,exports) {
 module.exports = require("a04eca0dab3cf374").getBundleURL("hWUTQ") + "icons.dfd7a6db.svg" + "?" + Date.now();
 
 },{"a04eca0dab3cf374":"lgJ39"}],"lgJ39":[function(require,module,exports) {
