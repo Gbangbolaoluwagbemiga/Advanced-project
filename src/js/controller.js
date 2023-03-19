@@ -9,6 +9,7 @@ import recipeView from './views/recipeView.js';
 
 // importing fractional
 import Fractional from 'fractional';
+console.log(Fractional);
 
 /*
 const timeout = function (s) {
