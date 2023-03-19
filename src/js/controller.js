@@ -7,6 +7,9 @@ import * as model from './model.js';
 // importing class from recipe view
 import recipeView from './views/recipeView.js';
 
+// importing fractional
+import Fractional from 'fractional';
+
 /*
 const timeout = function (s) {
   return new Promise(function (_, reject) {
@@ -22,19 +25,6 @@ timeout(5);
 
 ///////////////////////////////////////
 
-// spinner function
-// const renderSpinner = function (parentEl) {
-//   const html = `
-//   <div class="spinner">
-//           <svg>
-//             <use href="${icons}#icon-loader"></use>
-//           </svg>
-//       </div>
-//   `;
-//   parentEl.innerHTML = '';
-//   parentEl.insertAdjacentHTML('afterbegin', html);
-// };
-
 const showRecipe = async function () {
   try {
     // spinner
@@ -42,7 +32,6 @@ const showRecipe = async function () {
 
     // creating a variable for the changed hash
     const id = window.location.hash.slice(1);
-    console.log(id);
 
     // Guard clause peradventure there is no hash
     if (!id) return;
@@ -51,11 +40,7 @@ const showRecipe = async function () {
     await model.loadRecipe(id);
     const { recipe } = model.state;
     recipeView.render(recipe);
-    console.log(recipe);
-
-    // console.log(res, data);
   } catch (error) {
-    console.log(error);
     alert(error);
   }
 };
