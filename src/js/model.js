@@ -7,7 +7,7 @@ export const state = {
 
 export const loadRecipe = async function (id) {
   try {
-    const data = await helperFunc.getJSON(`${config.API_URL}/${id}`);
+    const data = await helperFunc.getJSON(`${config.API_URL}${id}`);
 
     const { recipe } = data.data;
 
@@ -29,3 +29,15 @@ export const loadRecipe = async function (id) {
 };
 // await loadRecipe()
 // state.recipes = { greetings: 'hi' };
+
+export const searchFunc = async function (research) {
+  try {
+    const data = await helperFunc.getJSON(
+      `${config.API_URL}?search=${research}`
+    );
+    console.log(data);
+  } catch (error) {
+    throw error;
+  }
+};
+searchFunc('pizza');

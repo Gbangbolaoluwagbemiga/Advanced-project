@@ -1987,6 +1987,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "state", ()=>state);
 parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
+parcelHelpers.export(exports, "searchFunc", ()=>searchFunc);
 var _runtime = require("regenerator-runtime/runtime");
 var _config = require("./config");
 var _helperFunc = require("./HelperFunc");
@@ -1995,7 +1996,7 @@ const state = {
 };
 const loadRecipe = async function(id) {
     try {
-        const data = await _helperFunc.getJSON(`${_config.API_URL}/${id}`);
+        const data = await _helperFunc.getJSON(`${_config.API_URL}${id}`);
         const { recipe  } = data.data;
         // Rewriting of the variables and storing them.
         state.recipe = {
@@ -2012,8 +2013,16 @@ const loadRecipe = async function(id) {
         console.error(`🔥🔥🔥🔥${err}🔥🔥🔥🔥🔥`);
         throw err;
     }
-}; // await loadRecipe()
- // state.recipes = { greetings: 'hi' };
+};
+const searchFunc = async function(research) {
+    try {
+        const data = await _helperFunc.getJSON(`${_config.API_URL}?search=${research}`);
+        console.log(data);
+    } catch (error) {
+        throw error;
+    }
+};
+searchFunc("pizza");
 
 },{"regenerator-runtime/runtime":"dXNgZ","./config":"k5Hzs","./HelperFunc":"eoisr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dXNgZ":[function(require,module,exports) {
 /**
@@ -2606,7 +2615,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "API_URL", ()=>API_URL);
-const API_URL = `https://forkify-api.herokuapp.com/api/v2/recipes`;
+const API_URL = `https://forkify-api.herokuapp.com/api/v2/recipes/`;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
 exports.interopDefault = function(a) {
