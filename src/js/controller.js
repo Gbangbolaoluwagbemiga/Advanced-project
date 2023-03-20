@@ -38,3 +38,14 @@ const init = function () {
   recipeView.addHandlerRender(showRecipe);
 };
 init();
+
+//  function for loading the search result
+const loadSearchResults = async function () {
+  try {
+    await model.searchFunc('pizza');
+    console.log(model.state.search.results);
+  } catch (error) {
+    console.error(error);
+  }
+};
+loadSearchResults();

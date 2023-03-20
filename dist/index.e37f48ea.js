@@ -592,6 +592,16 @@ const init = function() {
     (0, _recipeViewJsDefault.default).addHandlerRender(showRecipe);
 };
 init();
+//  function for loading the search result
+const loadSearchResults = async function() {
+    try {
+        await _modelJs.searchFunc("pizza");
+        console.log(_modelJs.state.search.results);
+    } catch (error) {
+        console.error(error);
+    }
+};
+loadSearchResults();
 
 },{"core-js/modules/es.regexp.flags.js":"gSXXb","core-js/modules/web.immediate.js":"49tUX","./model.js":"Y4A21","./views/recipeView.js":"l60JC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gSXXb":[function(require,module,exports) {
 var global = require("3c8ab2a66f4cb945");
@@ -1992,7 +2002,11 @@ var _runtime = require("regenerator-runtime/runtime");
 var _config = require("./config");
 var _helperFunc = require("./HelperFunc");
 const state = {
-    recipe: {}
+    recipe: {},
+    search: {
+        query: {},
+        results: []
+    }
 };
 const loadRecipe = async function(id) {
     try {
@@ -2002,9 +2016,9 @@ const loadRecipe = async function(id) {
         state.recipe = {
             id: recipe.id,
             publisher: recipe.publisher,
-            sourceUrl: recipe.source_url,
             image: recipe.image_url,
             title: recipe.title,
+            sourceUrl: recipe.source_url,
             servings: recipe.servings,
             ingredients: recipe.ingredients,
             cookingTime: recipe.cooking_time
@@ -2014,10 +2028,20 @@ const loadRecipe = async function(id) {
         throw err;
     }
 };
-const searchFunc = async function(research) {
+const searchFunc = async function(query) {
     try {
-        const data = await _helperFunc.getJSON(`${_config.API_URL}?search=${research}`);
-        console.log(data);
+        state.search.query = query;
+        const data = await _helperFunc.getJSON(`${_config.API_URL}?search=${query}`);
+        state.search.results = data.data.recipes.map((el)=>{
+            return {
+                id: el.id,
+                publisher: el.publisher,
+                image: el.image_url,
+                title: el.title
+            };
+        });
+    // console.log(state);
+    // console.log(data);
     } catch (error) {
         throw error;
     }

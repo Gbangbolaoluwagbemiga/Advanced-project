@@ -3,6 +3,10 @@ import * as config from './config';
 import * as helperFunc from './HelperFunc';
 export const state = {
   recipe: {},
+  search: {
+    query: {},
+    results: [],
+  },
 };
 
 export const loadRecipe = async function (id) {
@@ -15,9 +19,9 @@ export const loadRecipe = async function (id) {
     state.recipe = {
       id: recipe.id,
       publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
       image: recipe.image_url,
       title: recipe.title,
+      sourceUrl: recipe.source_url,
       servings: recipe.servings,
       ingredients: recipe.ingredients,
       cookingTime: recipe.cooking_time,
@@ -30,12 +34,23 @@ export const loadRecipe = async function (id) {
 // await loadRecipe()
 // state.recipes = { greetings: 'hi' };
 
-export const searchFunc = async function (research) {
+export const searchFunc = async function (query) {
   try {
-    const data = await helperFunc.getJSON(
-      `${config.API_URL}?search=${research}`
-    );
-    console.log(data);
+    state.search.query = query;
+
+    const data = await helperFunc.getJSON(`${config.API_URL}?search=${query}`);
+
+    state.search.results = data.data.recipes.map(el => {
+      return {
+        id: el.id,
+        publisher: el.publisher,
+        image: el.image_url,
+        title: el.title,
+      };
+    });
+
+    // console.log(state);
+    // console.log(data);
   } catch (error) {
     throw error;
   }
