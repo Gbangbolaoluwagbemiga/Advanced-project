@@ -2719,7 +2719,7 @@ class ReceipeView {
 `;
         this.#clear();
     }
-    // clearing the parentEl
+    // clearing the parent Element
     #clear() {
         this.#parentEL.innerHTML = "";
     }
