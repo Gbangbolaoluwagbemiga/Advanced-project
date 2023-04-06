@@ -7,6 +7,7 @@ import * as model from './model.js';
 // importing class from recipe view
 import recipeView from './views/recipeView.js';
 
+// Api in use
 // https://forkify-api.herokuapp.com/v2
 
 ///////////////////////////////////////

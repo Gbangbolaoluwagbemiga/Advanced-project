@@ -566,6 +566,7 @@ var _modelJs = require("./model.js");
 var _recipeViewJs = require("./views/recipeView.js");
 var _recipeViewJsDefault = parcelHelpers.interopDefault(_recipeViewJs);
 "use strict";
+// Api in use
 // https://forkify-api.herokuapp.com/v2
 ///////////////////////////////////////
 const showRecipe = async function() {
